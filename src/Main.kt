@@ -22,5 +22,8 @@ fun main(){
 //    println("${Quiz.answered} of ${Quiz.total} answered.")
 //    println(Quiz.progressText)
     ///
-    Quiz().printProgressBar()
+//    val quiz = Quiz()
+//    quiz.printQuiz()
+    ///
+    Quiz().apply { printQuiz() }
 }
