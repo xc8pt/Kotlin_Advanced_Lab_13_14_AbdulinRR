@@ -42,17 +42,29 @@ fun main(){
         "Mercury", "Venus", "Earth", "Mars",
         "Jupiter", "Saturn", "Uranus", "Neptune"
     )
+//    println(solarSystem.size)
+//    print(solarSystem.indexOf("Earth"))
+//    print(solarSystem.indexOf("Pluto"))
+//    println()
+//    for (planet in solarSystem) {
+//        println(planet)
+//    }
+//    solarSystem.add("Pluto")
+//    ///
+//    solarSystem.add(3,"Theia")
+//    ///
+//    println(solarSystem.contains("Pluto"))
+//    println("Future Moon" in solarSystem)
     println(solarSystem.size)
-    print(solarSystem.indexOf("Earth"))
-    print(solarSystem.indexOf("Pluto"))
-    println()
-    for (planet in solarSystem) {
-        println(planet)
-    }
-    solarSystem.add("Pluto")
     ///
-    solarSystem.add(3,"Theia")
+    solarSystem.add("Pluto")
+    println(solarSystem.size)
+    solarSystem.add("Pluto")
+    println(solarSystem.size)
     ///
     println(solarSystem.contains("Pluto"))
-    println("Future Moon" in solarSystem)
+    ///
+    solarSystem.remove("Pluto")
+    solarSystem.add("Pluto")
+    println(solarSystem.size)
 }
