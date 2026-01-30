@@ -158,7 +158,107 @@ val solarSystem = mutableSetOf(
 ```
 ---
 ### Map collection (Коллекция Map)
+Map — это коллекция, состоящая из ключей и значений.
+### Объявление Map
+ - mapOf() — неизменяемая карта
+ - mutableMapOf() — изменяемая карта
+---
+### Создание MutableMap
+Пример:
+```kotlin
+val solarSystem = mutableMapOf(
+    "Mercury" to 0,
+    "Venus" to 0,
+    "Earth" to 1,
+    "Mars" to 2,
+    "Jupiter" to 79,
+    "Saturn" to 82,
+    "Uranus" to 27,
+    "Neptune" to 14
+)
+println(solarSystem.size)
+```
+---
+###  Higher-order functions с коллекциями
+В этом шаге вы познакомитесь с рядом функций для коллекций:
+ - forEach()
+ - map()
+ - filter()
+ - groupBy()
+ - fold()
+ - sortedBy()
+---
+#### Использование forEach()
+```kotlin
+cookies.forEach {
+    println("Пункт меню: ${it.name}")
+}
+```
+---
+#### map()
+```kotlin
+val fullMenu = cookies.map{
+      "${it.name} - $${it.price}"
+   }
+   println("Полное меню:")
+   fullMenu.forEach {
+       println(it)
+   }
+``` 
+---
+#### filter()
+```kotlin
+val softBakedMenu = cookies.filter{
+    it.softBaked
+}
+    println("Мягкое печенье:")
+    softBakedMenu.forEach {
+        println("${it.name} - $${it.price}") 
+    }
+```
+---
+####  groupBy() для коллекций
+Функция groupBy() позволяет превратить список в Map, где:
+ - ключ — результат функции, переданной в groupBy
+ - значение — список элементов, для которых функция вернула этотключ
 
+Пример с нашими печеньками: сгруппируем их по свойству softBaked.
+```kotlin
+   val groupedMenu = cookies.groupBy { it.softBaked }
+   val softBakedMenu = groupedMenu[true] ?: emptyList()
+   val crunchyMenu = groupedMenu[false] ?: emptyList()
+   println("Soft cookies:")
+   softBakedMenu.forEach {
+       println("${it.name} - $${it.price}")
+   }
+   println("Crunchy cookies:")
+   crunchyMenu.forEach {
+       println("${it.name} - $${it.price}") 
+   }
+```
+---
+####  fold()
+Функция fold() аккумулирует значения коллекции в одно значение.
+```kotlin
+   val totalPrice = cookies.fold(0.0) { total, cookie ->
+       total + cookie.price
+   }
+   println("Total price: $${totalPrice}")
+```
+- 0.0 — начальное значение аккумулятора (total)
+- Лямбда { total, cookie -> total + cookie.price } вызывается для каждого элемента
+- Результат каждого вызова передается как total для следующего элемента
+---
+#### sortedBy()
+Функция sortedBy() сортирует коллекцию по значению свойства, указанного в лямбде.
+```kotlin
+val alphabeticalMenu = cookies.sortedBy { it.name }
+println("Меню в алфавитном порядке:")
+alphabeticalMenu.forEach {
+println(it.name)
+}
+```
+---
 ## Автор
 Абдулин Ринат Рушанович
 ## Лицензия
